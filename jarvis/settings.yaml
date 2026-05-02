@@ -1,0 +1,23 @@
+---
+title: Jarvis Command Center
+theme: dark
+background:
+  image: https://i.postimg.cc/rFYBr0Hc/Tony-Stark-Wallpaper-in-4K.jpg
+  brightness: 40
+  opacity: 70
+
+columns: 3
+
+layout:
+  Cloud Storage:
+    style: column
+  Entertainment:
+    style: column
+  Network & Security:
+    style: column
+  Jarvis Core:
+    style: column
+  Infrastructure:
+    style: column
+  Media Automation:
+    style: column

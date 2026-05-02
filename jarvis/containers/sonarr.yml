@@ -1,0 +1,16 @@
+services:
+  sonarr:
+    container_name: sonarr
+    image: lscr.io/linuxserver/sonarr:latest
+    environment:
+      - TZ=Asia/Kolkata
+      - PUID=1000
+      - PGID=1000
+      - SONARR_CHANNEL=v4-stable
+      - SONARR_BRANCH=main
+    ports:
+      - "8989:8989"
+    volumes:
+      - /opt/arrstack/sonarr:/config
+      - /opt/media:/data
+    restart: unless-stopped

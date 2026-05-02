@@ -1,0 +1,14 @@
+/* Service card styling */
+.service-card {
+  background: rgba(0, 0, 0, 0.3) !important;
+  backdrop-filter: blur(4px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Force 3-column layout - override xl:basis-1/4 */
+.services-group {
+  flex-basis: 33.333333% !important;
+  max-width: 33.333333% !important;
+  width: 33.333333% !important;
+  flex-grow: 0 !important;
+}

@@ -1,0 +1,15 @@
+services:
+  flaresolverr:
+    container_name: flaresolverr
+    image: ghcr.io/flaresolverr/flaresolverr:latest
+    environment:
+      - TZ=Asia/Kolkata
+      - LOG_LEVEL=info
+    ports:
+      - "8191:8191"
+    volumes:
+      - flaresolverr-config:/config
+    restart: unless-stopped
+
+volumes:
+  flaresolverr-config:

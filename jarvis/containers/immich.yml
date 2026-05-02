@@ -1,0 +1,22 @@
+services:
+  immich:
+    container_name: Immich
+    image: ghcr.io/immich-app/immich-server:v2.7.4
+    environment:
+      - UPLOAD_LOCATION=/usr/src/app/upload
+      - TYPESENSE_API_KEY=<IMMICH_TYPESENSE_API_KEY>
+      - DB_PASSWORD=<IMMICH_DB_PASSWORD>
+      - DB_HOSTNAME=Immich-database
+      - DB_USERNAME=postgres
+      - DB_DATABASE_NAME=immich
+      - REDIS_HOSTNAME=Immich-redis
+    ports:
+      - "2283:2283"
+    volumes:
+      - immich-data:/data
+      - /etc/localtime:/etc/localtime
+      - /cosmos-storage/immich-photos:/usr/src/app/upload
+    restart: always
+
+volumes:
+  immich-data:

@@ -1,0 +1,19 @@
+services:
+  pihole:
+    container_name: pihole
+    image: pihole/pihole:latest
+    environment:
+      - TZ=Asia/Kolkata
+      - FTLCONF_webserver_api_password=<PIHOLE_ADMIN_PASSWORD>
+      - DNSMASQ_USER=pihole
+      - FTL_CMD=no-daemon
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "8080:80"
+    volumes:
+      - /cosmos-storage/pihole-fresh-dnsmasq:/etc/dnsmasq.d
+      - /cosmos-storage/pihole-fresh-config:/etc/pihole
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "dig -p $(pihole-FTL --config dns.port) +short +norecurse +retry=0 @127.0.0.1 pi.hole || exit 1"]

@@ -1,0 +1,14 @@
+services:
+  unbound:
+    container_name: unbound
+    image: mvance/unbound:latest
+    ports:
+      - "5335:53/tcp"
+      - "5335:53/udp"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "drill @127.0.0.1 cloudflare.com || exit 1"]
+      interval: 30s
+      timeout: 30s
+      retries: 3
+      start_period: 10s

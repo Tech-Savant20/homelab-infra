@@ -1,0 +1,12 @@
+---
+- search:
+    provider: google
+    target: _blank
+
+- resources:
+    cpu: true
+    memory: true
+    disk: /
+    backend: glances
+    url: http://<JARVIS_LAN_IP>:61208
+    version: 4

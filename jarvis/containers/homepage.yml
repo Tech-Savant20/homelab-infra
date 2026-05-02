@@ -1,0 +1,19 @@
+services:
+  homepage:
+    container_name: Homepage
+    image: ghcr.io/gethomepage/homepage:latest
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - PORT=3000
+      - HOMEPAGE_ALLOWED_HOSTS=*
+    volumes:
+      - /cosmos-storage/homepage-config:/app/config
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /cosmos-storage/icons:/app/public/icons
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://127.0.0.1:$PORT/api/healthcheck || exit 1"]
+      interval: 10s
+      timeout: 3s
+      start_period: 20s

@@ -1,0 +1,347 @@
+- Cloud Storage:
+    - Nextcloud:
+        icon: nextcloud
+        href: "https://<JARVIS_TAILSCALE_IP>:7200"
+        description: File Sync
+
+    - Immich:
+        icon: immich
+        href: "http://<JARVIS_TAILSCALE_IP>:2283"
+        description: Photo Backup
+
+- Entertainment:
+    - Minecraft Server:
+        icon: minecraft.png
+        description: Fabric 26.2 • Crafty Controller
+        widget:
+          type: minecraft
+          url: "udp://<ORACLE1_PUBLIC_IP>:25565"
+
+    - Crafty Controller:
+        icon: crafty-controller.png
+        href: "https://<ORACLE1_TAILSCALE_IP>:8443"
+        description: Minecraft server mgmt panel
+
+- Network & Security:
+    - Tailscale:
+        icon: tailscale.png
+        href: https://login.tailscale.com/admin
+        description: VPN & remote access
+
+    - DuckDNS:
+        icon: duckdns.png
+        href: https://www.duckdns.org
+        description: Dynamic DNS
+
+    - Vaultwarden:
+        icon: vaultwarden.png
+        href: https://<VAULT_DUCKDNS_DOMAIN>
+        description: Password manager (Oracle vault-server)
+        ping: https://<VAULT_DUCKDNS_DOMAIN>
+
+- Jarvis Core:
+    - System:
+        icon: mdi-server
+        description: Intel i3-6006U • Ubuntu 24.04
+        widget:
+          type: glances
+          url: "http://<JARVIS_LAN_IP>:61208"
+          version: 4
+          metric: cpu
+
+    - Memory:
+        icon: mdi-memory
+        widget:
+          type: glances
+          url: "http://<JARVIS_LAN_IP>:61208"
+          version: 4
+          metric: memory
+
+    - Disk:
+        icon: mdi-harddisk
+        widget:
+          type: glances
+          url: "http://<JARVIS_LAN_IP>:61208"
+          version: 4
+          metric: disk:sda
+
+    - Storage:
+        icon: mdi-harddisk
+        description: Media Drive
+        widget:
+          type: glances
+          url: "http://<JARVIS_LAN_IP>:61208"
+          version: 4
+          metric: fs:/host
+
+    - Processes:
+        icon: mdi-chart-timeline-variant
+        widget:
+          type: glances
+          url: "http://<JARVIS_LAN_IP>:61208"
+          version: 4
+          metric: process
+
+    - Containers:
+        icon: mdi-docker
+        widget:
+          type: glances
+          url: "http://<JARVIS_LAN_IP>:61208"
+          version: 4
+          metric: containers
+
+- Infrastructure:
+    - Cosmos OS:
+        icon: cosmos-cloud.png
+        href: "https://<JARVIS_TAILSCALE_IP>/cosmos-ui/"
+        description: Master Gateway
+
+    - Code-Server:
+        icon: code-server
+        href: "http://<JARVIS_TAILSCALE_IP>:8444"
+        description: Browser IDE
+
+    - Pi-hole:
+        icon: pi-hole
+        href: "http://<JARVIS_TAILSCALE_IP>:8080/admin"
+        description: Network Sinkhole
+        widget:
+          type: pihole
+          url: "http://<JARVIS_TAILSCALE_IP>:8080"
+          version: 6
+          key: "<PIHOLE_API_KEY>"
+
+    - Unbound:
+        icon: mdi-dns
+        href: "http://<JARVIS_TAILSCALE_IP>:5335"
+        description: Recursive DNS Resolver
+
+    - Glances (Jarvis):
+        icon: glances
+        href: "http://<JARVIS_TAILSCALE_IP>:61208"
+        description: System Metrics
+        widget:
+          type: glances
+          url: "http://<JARVIS_LAN_IP>:61208"
+          version: 4
+          metric: info
+
+    - Uptime Kuma (Jarvis):
+        icon: uptime-kuma
+        href: "http://<JARVIS_TAILSCALE_IP>:3001"
+        description: Service Monitor
+        widget:
+          type: uptimekuma
+          url: "http://172.17.0.1:3001"
+          slug: "jarvis"
+
+    - Uptime Kuma (Vault-Server):
+        icon: uptime-kuma
+        href: "http://<VAULT_SERVER_TAILSCALE_IP>:3001"
+        description: External Monitor
+
+    - Postimages:
+        icon: https://postimages.org/favicon.ico
+        href: https://postimages.org
+        description: Image Hosting
+
+    - n8n:
+        href: http://<JARVIS_TAILSCALE_IP>:5678
+        description: Workflow Automation
+        icon: n8n.png
+
+- Media Automation:
+    - Jellyfin:
+        icon: jellyfin
+        href: "http://<JARVIS_TAILSCALE_IP>:8096"
+        description: Media Server
+        widget:
+          type: jellyfin
+          url: "http://<JARVIS_TAILSCALE_IP>:8096"
+          key: "<JELLYFIN_API_KEY>"
+
+    - Jellyseerr:
+        icon: jellyseerr
+        href: "http://<JARVIS_TAILSCALE_IP>:5055"
+        description: Request System
+        widget:
+          type: jellyseerr
+          url: "http://<JARVIS_TAILSCALE_IP>:5055"
+          key: "<JELLYSEERR_API_KEY>"
+
+    - Radarr:
+        icon: radarr
+        href: "http://<JARVIS_TAILSCALE_IP>:7878"
+        description: Movies
+        widget:
+          type: radarr
+          url: "http://<JARVIS_TAILSCALE_IP>:7878"
+          key: "<RADARR_API_KEY>"
+
+    - Sonarr:
+        icon: sonarr
+        href: "http://<JARVIS_TAILSCALE_IP>:8989"
+        description: TV Shows
+        widget:
+          type: sonarr
+          url: "http://<JARVIS_TAILSCALE_IP>:8989"
+          key: "<SONARR_API_KEY>"
+
+    - Sonarr Anime:
+        icon: sonarr
+        href: "http://<JARVIS_TAILSCALE_IP>:8990"
+        description: Anime
+        widget:
+          type: sonarr
+          url: "http://<JARVIS_TAILSCALE_IP>:8990"
+          key: "<SONARR_ANIME_API_KEY>"
+
+    - Prowlarr:
+        icon: prowlarr
+        href: "http://<JARVIS_TAILSCALE_IP>:9696"
+        description: Indexers
+        widget:
+          type: prowlarr
+          url: "http://<JARVIS_TAILSCALE_IP>:9696"
+          key: "<PROWLARR_API_KEY>"
+
+    - qBittorrent:
+        icon: qbittorrent
+        href: "http://<JARVIS_TAILSCALE_IP>:8081"
+        description: Downloads
+        widget:
+          type: qbittorrent
+          url: "http://<JARVIS_TAILSCALE_IP>:8081"
+          username: "<QBITTORRENT_USERNAME>"
+          password: "<QBITTORRENT_PASSWORD>"
+
+- Oracle 1 Core:
+    - System:
+        icon: mdi-server
+        description: Ampere A1 • 2 OCPU • Ubuntu 24.04
+        widget:
+          type: glances
+          url: "http://<ORACLE1_TAILSCALE_IP>:61208"
+          version: 4
+          metric: cpu
+
+    - Memory:
+        icon: mdi-memory
+        widget:
+          type: glances
+          url: "http://<ORACLE1_TAILSCALE_IP>:61208"
+          version: 4
+          metric: memory
+
+    - Disk:
+        icon: mdi-harddisk
+        widget:
+          type: glances
+          url: "http://<ORACLE1_TAILSCALE_IP>:61208"
+          version: 4
+          metric: disk:sda
+
+    - Backup Volume:
+        icon: mdi-harddisk
+        description: 100GB Backup Volume
+        widget:
+          type: glances
+          url: "http://<ORACLE1_TAILSCALE_IP>:61208"
+          version: 4
+          metric: fs:/mnt/backups
+
+    - Processes:
+        icon: mdi-chart-timeline-variant
+        widget:
+          type: glances
+          url: "http://<ORACLE1_TAILSCALE_IP>:61208"
+          version: 4
+          metric: process
+
+    - Containers:
+        icon: mdi-docker
+        widget:
+          type: glances
+          url: "http://<ORACLE1_TAILSCALE_IP>:61208"
+          version: 4
+          metric: containers
+
+    - Storage:
+        icon: mdi-harddisk
+        description: Media Drive
+        widget:
+          type: glances
+          url: "http://<ORACLE1_TAILSCALE_IP>:61208"
+          version: 4
+          metric: fs:/host
+
+- Oracle 1 Mini (Vault):
+    - System:
+        icon: mdi-server
+        description: E2.1.Micro • 1 OCPU • Ubuntu 24.04
+        widget:
+          type: glances
+          url: "http://<VAULT_SERVER_TAILSCALE_IP>:61208"
+          version: 4
+          metric: cpu
+
+    - Memory:
+        icon: mdi-memory
+        widget:
+          type: glances
+          url: "http://<VAULT_SERVER_TAILSCALE_IP>:61208"
+          version: 4
+          metric: memory
+
+    - Disk:
+        icon: mdi-harddisk
+        widget:
+          type: glances
+          url: "http://<VAULT_SERVER_TAILSCALE_IP>:61208"
+          version: 4
+          metric: disk:sda
+
+    - Processes:
+        icon: mdi-chart-timeline-variant
+        widget:
+          type: glances
+          url: "http://<VAULT_SERVER_TAILSCALE_IP>:61208"
+          version: 4
+          metric: process
+
+    - Containers:
+        icon: mdi-docker
+        widget:
+          type: glances
+          url: "http://<VAULT_SERVER_TAILSCALE_IP>:61208"
+          version: 4
+          metric: containers
+
+    - Storage:
+        icon: mdi-harddisk
+        description: Media Drive
+        widget:
+          type: glances
+          url: "http://<VAULT_SERVER_TAILSCALE_IP>:61208"
+          version: 4
+          metric: fs:/host
+
+- Oracle 1 Mini 2:
+    - Not Yet Set Up:
+        icon: mdi-server-off
+        description: Second AMD micro — not yet provisioned
+
+- Oracle 2 Core:
+    - Not Yet Set Up:
+        icon: mdi-server-off
+        description: Second Oracle account — instance not yet running
+
+- Oracle 2 Mini (Vault):
+    - Not Yet Set Up:
+        icon: mdi-server-off
+        description: Not yet provisioned
+
+- Oracle 2 Mini 2:
+    - Not Yet Set Up:
+        icon: mdi-server-off
+        description: Not yet provisioned

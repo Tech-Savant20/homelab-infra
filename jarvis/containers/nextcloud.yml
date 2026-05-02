@@ -1,0 +1,24 @@
+services:
+  nextcloud:
+    container_name: Nextcloud
+    image: nextcloud
+    environment:
+      - NEXTCLOUD_TRUSTED_DOMAINS=<JARVIS_LAN_IP>:7200
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud
+      - MYSQL_PASSWORD=<NEXTCLOUD_MYSQL_PASSWORD>
+      - MYSQL_HOST=Nextcloud-mariadb
+      - REDIS_HOST=Nextcloud-redis
+      - REDIS_HOST_PASSWORD=<NEXTCLOUD_REDIS_PASSWORD>
+      - NC_overwriteprotocol=https
+    volumes:
+      - nextcloud-html:/var/www/html
+      - Nextcloud-config:/var/www/html/config
+      - Nextcloud-custom_apps:/var/www/html/custom_apps
+      - /cosmos-storage/nextcloud-data:/var/www/html/data
+    restart: unless-stopped
+
+volumes:
+  nextcloud-html:
+  Nextcloud-config:
+  Nextcloud-custom_apps:

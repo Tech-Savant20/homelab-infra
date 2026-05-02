@@ -1,0 +1,13 @@
+services:
+  jellyseerr:
+    container_name: jellyseerr
+    image: fallenbagel/jellyseerr:latest
+    environment:
+      - TZ=Asia/Kolkata
+      - PUID=1000
+      - PGID=1000
+    ports:
+      - "5055:5055"
+    volumes:
+      - /opt/arrstack/jellyseerr:/app/config
+    restart: unless-stopped

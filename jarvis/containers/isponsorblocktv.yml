@@ -1,0 +1,11 @@
+services:
+  isponsorblocktv:
+    container_name: iSponsorBlockTV
+    image: ghcr.io/dmunozv04/isponsorblocktv
+    environment:
+      - iSPBTV_docker=True
+      - iSPBTV_data_dir=data
+    volumes:
+      - /home/uday/isponsorblocktv-config:/app/data
+    network_mode: host
+    restart: unless-stopped

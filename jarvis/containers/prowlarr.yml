@@ -1,0 +1,16 @@
+services:
+  prowlarr:
+    container_name: prowlarr
+    image: lscr.io/linuxserver/prowlarr:latest
+    environment:
+      - TZ=Asia/Kolkata
+      - PUID=1000
+      - PGID=1000
+    ports:
+      - "9696:9696"
+    volumes:
+      - /opt/arrstack/prowlarr:/config
+    dns:
+      - 8.8.8.8
+      - 1.1.1.1
+    restart: unless-stopped

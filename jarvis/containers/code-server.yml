@@ -1,0 +1,18 @@
+services:
+  code-server:
+    container_name: Code-Server
+    image: lscr.io/linuxserver/code-server:latest
+    environment:
+      - PUID=0
+      - PGID=0
+      - DEFAULT_WORKSPACE=/workspace
+    ports:
+      - "8444:8443"
+    volumes:
+      - Code-Server-config:/config
+      - /cosmos-storage:/workspace
+      - /cosmos-storage/homepage-config:/workspace/homepage-config
+    restart: unless-stopped
+
+volumes:
+  Code-Server-config:

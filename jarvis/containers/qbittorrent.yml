@@ -1,0 +1,17 @@
+services:
+  qbittorrent:
+    container_name: qbittorrent
+    image: lscr.io/linuxserver/qbittorrent:latest
+    environment:
+      - TZ=Asia/Kolkata
+      - WEBUI_PORT=8081
+      - PUID=1000
+      - PGID=1000
+    ports:
+      - "6881:6881/tcp"
+      - "6881:6881/udp"
+      - "8081:8081"
+    volumes:
+      - /opt/arrstack/qbittorrent:/config
+      - /opt/media:/data
+    restart: unless-stopped
