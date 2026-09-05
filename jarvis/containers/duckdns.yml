@@ -3,7 +3,7 @@ services:
     container_name: duckdns
     image: lscr.io/linuxserver/duckdns:latest
     environment:
-      - SUBDOMAINS=abhyudaylab
+      - SUBDOMAINS=<DUCKDNS_SUBDOMAIN>
       - TOKEN=<DUCKDNS_TOKEN>
       - UPDATE_IP=ipv4
       - LOG_FILE=false
