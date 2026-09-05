@@ -8,36 +8,14 @@ Built incrementally from May to August 2026 as a personal project during college
 
 ## Architecture
 
-```
-                          ┌─────────────────────┐
-                          │   Windows Laptop     │
-                          │  (media sync target) │
-                          └──────────┬───────────┘
-                                     │ Tailscale
-                          ┌──────────┴───────────┐
-                          │        JARVIS         │
-                          │  (home server, Linux)  │
-                          │                        │
-                          │  Cosmos OS (proxy)     │
-                          │  Pi-hole + Unbound DNS │
-                          │  Jellyfin + arr stack  │
-                          │  Nextcloud, Immich     │
-                          │  Homepage dashboard    │
-                          │  Uptime Kuma ──────────┼──┐
-                          └──────────┬─────────────┘  │
-                                     │ Tailscale       │ watches
-                    ┌────────────────┴───────────┐     │
-                    │                             │     │
-         ┌──────────┴──────────┐      ┌──────────┴─────┴───┐
-         │      ORACLE-1        │      │    VAULT-SERVER     │
-         │  (Ampere A1, 2 OCPU) │      │  (E2.1 Micro, 1 CPU) │
-         │                      │      │                      │
-         │  Minecraft (Fabric)  │◄─────┤  Vaultwarden         │
-         │  Crafty Controller   │watches│  behind Caddy (TLS) │
-         │  Glances metrics     │      │  Uptime Kuma ────────┼──► watches Jarvis, oracle-1
-         │  100GB backup volume │      │  Nightly backup ─────┼──► Jarvis (over Tailscale)
-         └──────────────────────┘      └──────────────────────┘
-```
+![Architecture Diagram](./images/homelab_architecture_diagram-v2.png)
+
+<details>
+<summary>Alternate view</summary>
+
+![Architecture Diagram (illustrated)](./images/Gemini_Generated_Image_l4ir3l4ir3l4ir3l.png)
+
+</details>
 
 Three independent Uptime Kuma-style watchers form a monitoring triangle — no single server is responsible for reporting its own downtime, which closes a gap that a naive "monitor everything from one dashboard" setup has.
 
