@@ -2,7 +2,7 @@
 
 A three-server self-hosted infrastructure project: a repurposed-laptop home server, and two Oracle Cloud Always Free instances, tied together with Tailscale, cross-server monitoring, and automated encrypted backups.
 
-Built incrementally from May to August 2026 as a personal project during college.
+Infrastructure built and run continuously since May 2026. This repository was published in September from live configs and server notes; commit dates reconstruct the build timeline.
 
 ---
 
